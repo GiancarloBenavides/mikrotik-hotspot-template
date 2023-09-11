@@ -61,11 +61,13 @@ nav.toolbar-float {
     top: 0;
     left: 0;
 
-    &>button.icon {
+    &>button.icon,
+    &>a.icon {
         background-color: rgb(var(--color) / 0.01);
-        padding: 8px 4px 4px 4px;
-        margin: 5px 4px 0 0;
+        padding: 4px;
+        margin: 10px 5px 0 0;
         border-radius: 25px;
+        text-align: center;
         height: 48px;
         width: 48px;
         border: none;
@@ -73,6 +75,24 @@ nav.toolbar-float {
 
     &>button.icon:hover {
         background-color: rgb(var(--color) / 0.1);
+    }
+
+    &>a.icon {
+        background-color: rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        padding: 0;
+        cursor: pointer;
+
+        &>img {
+            border: #da3d41;
+            clip-path: circle(40% at 50% 50%);
+            height: 48px;
+            width: 48px;
+        }
+    }
+
+    &>a.icon:hover {
+        background-color: rgba(0, 0, 0, 0.2);
     }
 
     &>button.icon svg {
@@ -189,7 +209,7 @@ p::first-letter {
 h1 {
     text-align: center;
     color: rgb(var(--color));
-    font-size: 2rem
+    font-size: 1.7rem
 }
 
 .wrap {
