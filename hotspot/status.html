@@ -1,0 +1,103 @@
+<html>
+<head>
+$(if refresh-timeout)
+<meta http-equiv="refresh" content="$(refresh-timeout-secs)">
+$(endif)
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />   
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="-1">
+<title>Internet hotspot - Status</title>
+<link rel="stylesheet" href="css/style.css">
+<script>
+
+$(if advert-pending == 'yes')
+    var popup = '';
+    function focusAdvert() {
+	if (window.focus) popup.focus();
+    }
+    function openAdvert() {
+	popup = open('$(link-advert)', 'hotspot_advert', '');
+	setTimeout("focusAdvert()", 1000);
+    }
+$(endif)
+    function openLogout() {
+	if (window.name != 'hotspot_status') return true;
+        open('$(link-logout)', 'hotspot_logout', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=280,height=250');
+	window.close();
+	return false;
+    }
+</script>
+    
+</head>
+<body $(if advert-pending == 'yes') onLoad="openAdvert()" $(endif)>
+    <div class="ie-fixMinHeight">
+        <div class="main">
+            <div class="wrap">
+                $(if login-by == 'trial')
+                    <h1>Hi, trial user!</h1>
+                $(elif login-by != 'mac')
+                    <h1>Hi, $(username)!</h1>
+                $(endif)                
+
+                <form action="$(link-logout)" name="logout" onSubmit="return openLogout()">
+                    <table>
+                        <tr><td>IP address</td><td>$(ip)</td></tr>
+                        <tr><td>Bytes up / down</td><td>$(bytes-in-nice) / $(bytes-out-nice)</td></tr>
+                    $(if session-time-left)
+                        <tr><td>Connected / left</td><td>$(uptime) / $(session-time-left)</td></tr>
+                    $(else)
+                        <tr><td>Connected</td><td>$(uptime)</td></tr>
+                    $(endif)
+                    $(if blocked == 'yes')
+                        <tr><td>Status</td><td>
+                    <a href="$(link-advert)" target="hotspot_advert">Advertisement required</a></td>
+                        </tr>
+                    $(elif refresh-timeout)
+                        <tr><td>Status refresh</td><td>$(refresh-timeout)</td></tr>
+                    $(endif)
+                        </table>
+                    $(if login-by-mac != 'yes')
+                    <!-- user manager link. if user manager resides on other router, replace $(hostname) by its address
+                    <button onclick="document.location='http://$(hostname)/user?subs='; return false;">status</button>
+                    <!-- end of user manager link -->
+                    <input type="submit" value="Log out">
+                    $(endif)
+                </form>
+            </div>
+        </div>
+    </div>
+    <nav class="toolbar-float">
+        <a class="icon" href="">
+            <svg id="toggle-font" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 100 100">
+                <style>
+                    .str0{clip-rule:evenodd;fill-rule:evenodd}
+                </style>
+                <path class="fil0" d="M15 69.69l0 -39.38 14.78 0c3,0 5.41,0.39 7.24,1.19 1.81,0.8 3.23,2.03 4.26,3.69 1.04,1.65 1.55,3.38 1.55,5.19 0,1.68 -0.46,3.27 -1.37,4.75 -0.9,1.49 -2.28,2.69 -4.12,3.61 2.38,0.69 4.22,1.88 5.49,3.57 1.28,1.68 1.92,3.67 1.92,5.96 0,1.85 -0.39,3.56 -1.17,5.15 -0.78,1.59 -1.74,2.81 -2.89,3.67 -1.14,0.85 -2.58,1.5 -4.3,1.94 -1.74,0.44 -3.85,0.66 -6.37,0.66l-15.02 0zm69.07 -36.34c0.59,0.55 0.93,1.33 0.93,2.14 0,1.61 -1.31,2.91 -2.92,2.91 -0.81,0 -1.58,-0.33 -2.13,-0.92l-12.52 -12.53 0 57.13c0,1.61 -1.31,2.92 -2.92,2.92 -1.61,0 -2.92,-1.31 -2.92,-2.92l0 -57.13 -12.52 12.53c-0.54,0.5 -1.25,0.78 -1.99,0.78 -1.61,0 -2.91,-1.31 -2.91,-2.92 0,-0.74 0.28,-1.45 0.78,-1.99l17.5 -17.5c0.55,-0.54 1.29,-0.85 2.06,-0.85 0.77,0 1.52,0.31 2.06,0.85l17.5 17.5 0 0zm-63.85 13.51l8.52 0c2.31,0 3.97,-0.15 4.97,-0.45 1.33,-0.4 2.33,-1.06 3,-1.97 0.67,-0.92 1,-2.07 1,-3.45 0,-1.31 -0.31,-2.47 -0.94,-3.46 -0.62,-1 -1.52,-1.68 -2.69,-2.05 -1.16,-0.37 -3.16,-0.55 -5.98,-0.55l-7.88 0 0 11.93zm0 18.21l9.81 0c1.69,0 2.87,-0.06 3.56,-0.19 1.19,-0.21 2.2,-0.57 3.01,-1.07 0.8,-0.51 1.46,-1.24 1.99,-2.2 0.52,-0.97 0.77,-2.08 0.77,-3.33 0,-1.48 -0.37,-2.75 -1.13,-3.84 -0.75,-1.09 -1.8,-1.85 -3.14,-2.29 -1.33,-0.44 -3.25,-0.66 -5.75,-0.66l-9.12 0 0 13.58z"/>
+            </svg>
+        </a>
+        <button class="icon" onclick="body.classList.toggle('hi-font'); return false;">
+            <svg id="toggle-font" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 100 100">
+                <style>
+                    .str0{clip-rule:evenodd;fill-rule:evenodd}
+                </style>
+                <path class="fil0" d="M15 69.69l0 -39.38 14.78 0c3,0 5.41,0.39 7.24,1.19 1.81,0.8 3.23,2.03 4.26,3.69 1.04,1.65 1.55,3.38 1.55,5.19 0,1.68 -0.46,3.27 -1.37,4.75 -0.9,1.49 -2.28,2.69 -4.12,3.61 2.38,0.69 4.22,1.88 5.49,3.57 1.28,1.68 1.92,3.67 1.92,5.96 0,1.85 -0.39,3.56 -1.17,5.15 -0.78,1.59 -1.74,2.81 -2.89,3.67 -1.14,0.85 -2.58,1.5 -4.3,1.94 -1.74,0.44 -3.85,0.66 -6.37,0.66l-15.02 0zm69.07 -36.34c0.59,0.55 0.93,1.33 0.93,2.14 0,1.61 -1.31,2.91 -2.92,2.91 -0.81,0 -1.58,-0.33 -2.13,-0.92l-12.52 -12.53 0 57.13c0,1.61 -1.31,2.92 -2.92,2.92 -1.61,0 -2.92,-1.31 -2.92,-2.92l0 -57.13 -12.52 12.53c-0.54,0.5 -1.25,0.78 -1.99,0.78 -1.61,0 -2.91,-1.31 -2.91,-2.92 0,-0.74 0.28,-1.45 0.78,-1.99l17.5 -17.5c0.55,-0.54 1.29,-0.85 2.06,-0.85 0.77,0 1.52,0.31 2.06,0.85l17.5 17.5 0 0zm-63.85 13.51l8.52 0c2.31,0 3.97,-0.15 4.97,-0.45 1.33,-0.4 2.33,-1.06 3,-1.97 0.67,-0.92 1,-2.07 1,-3.45 0,-1.31 -0.31,-2.47 -0.94,-3.46 -0.62,-1 -1.52,-1.68 -2.69,-2.05 -1.16,-0.37 -3.16,-0.55 -5.98,-0.55l-7.88 0 0 11.93zm0 18.21l9.81 0c1.69,0 2.87,-0.06 3.56,-0.19 1.19,-0.21 2.2,-0.57 3.01,-1.07 0.8,-0.51 1.46,-1.24 1.99,-2.2 0.52,-0.97 0.77,-2.08 0.77,-3.33 0,-1.48 -0.37,-2.75 -1.13,-3.84 -0.75,-1.09 -1.8,-1.85 -3.14,-2.29 -1.33,-0.44 -3.25,-0.66 -5.75,-0.66l-9.12 0 0 13.58z"/>
+            </svg>
+        </button> 
+        <button class="icon" onclick="body.classList.toggle('hi-contrast'); return false;">
+            <svg id="toggle-contrast" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 100 100">
+                <path class="fil0" d="M66.64 54.9c-0.55,0.6 -1.32,0.93 -2.13,0.93 -1.61,0 -2.92,-1.3 -2.92,-2.91 0,-0.81 0.34,-1.59 0.93,-2.14l12.52 -12.52 -57.12 0c-1.61,0 -2.92,-1.31 -2.92,-2.92 0,-1.61 1.31,-2.91 2.92,-2.91l57.12 0 -12.52 -12.53c-0.5,-0.53 -0.78,-1.25 -0.78,-1.98 0,-1.61 1.31,-2.92 2.92,-2.92 0.73,0 1.44,0.28 1.98,0.78l17.5 17.5c0.55,0.55 0.86,1.29 0.86,2.06 0,0.78 -0.31,1.52 -0.86,2.06l-17.5 17.5 0 0z"/>
+                <path class="fil0" d="M33.36 84.22c0.54,0.5 1.25,0.78 1.98,0.78 1.61,0 2.92,-1.31 2.92,-2.92 0,-0.73 -0.28,-1.45 -0.78,-1.99l-12.52 -12.52 57.12 0c1.61,0 2.92,-1.3 2.92,-2.91 0,-1.61 -1.31,-2.92 -2.92,-2.92l-57.12 0 12.52 -12.52c0.59,-0.55 0.93,-1.33 0.93,-2.14 0,-1.61 -1.31,-2.91 -2.92,-2.91 -0.81,0 -1.58,0.33 -2.13,0.92l-17.5 17.51c-0.55,0.54 -0.86,1.28 -0.86,2.06 0,0.77 0.31,1.51 0.86,2.06l17.5 17.5 0 0z"/>
+            </svg>
+        </button>        
+        <button class="icon" onclick="body.classList.toggle('dark'); return false;">
+            <svg id="toggle-theme" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 100 100">
+                <style>
+                    .str0{clip-rule:evenodd;fill-rule:evenodd}
+                </style>
+                <path class="fil0 str0" d="M50 15c19.33,0 35,15.67 35,35 0,19.33 -15.67,35 -35,35 -19.33,0 -35,-15.67 -35,-35 0,-19.33 15.67,-35 35,-35zm-0.08 65c-16.53,-0.04 -29.92,-13.46 -29.92,-30 0,-16.54 13.39,-29.96 29.92,-30l0 60z"/>
+            </svg>
+        </button>
+    </nav>
+</body>
+</html>
