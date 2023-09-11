@@ -1,0 +1,369 @@
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+html {
+    font-family: -apple-system, 'Roboto', 'Segoe UI Light', Ubuntu, 'Open Sans', Arial, sans-serif;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 12px;
+}
+
+:root {
+    --text: 0 0 0;
+    --color: 22 30 40;
+    --up-grad: 44 59 91;
+    --down-grad: 88 179 200;
+    --background: 136 136 136;
+    --deep-background: 255 255 255;
+    --link: rgb(72, 97, 115);
+    --radius: 4px;
+    --alpha-s: 0.3;
+    --alpha-m: 0.5;
+    --alpha-l: 0.7;
+}
+
+.dark {
+    --text: 255 255 255;
+    --color: 136 136 136;
+    --up-grad: 88 179 200;
+    --down-grad: 44 59 91;
+    --background: 22 30 40;
+    --deep-background: 5 0 25;
+    --link: rgb(220, 58, 65);
+    --alpha-s: 0.3;
+    --alpha-m: 0.5;
+    --alpha-l: 0.7;
+}
+
+nav.toolbar-float {
+    display: flex;
+    position: absolute;
+    justify-content: right;
+    width: 100%;
+    height: 50px;
+    top: 0;
+    left: 0;
+
+    &>button.icon {
+        background-color: rgb(var(--color) / 0.01);
+        padding: 8px 4px 4px 4px;
+        margin: 5px 4px 0 0;
+        border-radius: 25px;
+        height: 48px;
+        width: 48px;
+        border: none;
+    }
+
+    &>button.icon:hover {
+        background-color: rgb(var(--color) / 0.1);
+    }
+
+    &>button.icon svg {
+        height: 24px;
+        fill: rgb(var(--text) / 0.7);
+        margin-top: -2px;
+        transition: transform .4s ease-in-out;
+    }
+
+}
+
+.dark nav.toolbar-float button.icon #toggle-theme {
+    transform: rotate(180deg);
+}
+
+.hi-contrast nav.toolbar-float button.icon #toggle-contrast {
+    transform: scaleX(-1);
+}
+
+.hi-font nav.toolbar-float button.icon #toggle-font {
+    transform: scaleY(-1);
+}
+
+a,
+body,
+div,
+form,
+html,
+img,
+input,
+label,
+p,
+span {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body,
+html {
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+.hi-contrast {
+    background: rgb(var(--deep-background));
+}
+
+body {
+    background: rgb(var(--background));
+    color: rgb(var(--color));
+    font-size: 1rem;
+    background:
+        linear-gradient(315deg, rgb(var(--color) / .4) 20%, rgb(var(--color) / 0) 80%),
+        linear-gradient(25deg, rgb(var(--up-grad) / .5) 10%, rgb(var(--up-grad) / 0) 70%),
+        linear-gradient(245deg, rgb(var(--down-grad) / .7) 100%, rgb(var(--down-grad) / 0) 50%),
+        linear-gradient(180deg, rgb(var(--background)) 0%, rgb(var(--background) / 0) 70%)
+}
+
+.hi-font {
+    font-size: 1.2rem;
+}
+
+a {
+    color: var(--link);
+}
+
+input,
+label {
+    width: 100%;
+    vertical-align: middle;
+    white-space: normal;
+    background: 0 0;
+    line-height: 1
+}
+
+label {
+    position: relative;
+    display: block;
+}
+
+p::first-letter {
+    text-transform: uppercase
+}
+
+.main {
+    min-height: calc(100vh - 90px);
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column
+}
+
+.ie-fixMinHeight {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex
+}
+
+.logo {
+    max-width: 200px;
+    display: block;
+    margin: 0 auto 30px auto;
+
+    & * {
+        fill: rgb(var(--text));
+    }
+}
+
+h1 {
+    text-align: center;
+    color: rgb(var(--color));
+    font-size: 2rem
+}
+
+.wrap {
+    width: calc(100% - 8rem);
+    margin: auto;
+    padding: 4rem;
+    -webkit-transition: width .3s ease-in-out;
+    transition: width .3s ease-in-out
+}
+
+form {
+    width: 100%;
+    margin-bottom: 20px
+}
+
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn
+}
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both
+}
+
+.info {
+    text-align: center;
+    margin-bottom: 30px
+}
+
+h1,
+.info,
+table td {
+    color: rgb(var(--color) / .7);
+}
+
+.dark h1,
+.dark .info,
+.dark table td {
+    color: rgb(var(--text) / 1);
+}
+
+.info.alert {
+    color: #da3d41
+}
+
+table {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    width: 100%
+}
+
+table td {
+    border-top: 1px solid rgb(var(--color) / 0.5);
+    padding: 10px 4px 10px 0
+}
+
+table td:first-child {
+    font-weight: 700
+}
+
+.ico {
+    height: 2.3em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 0.4em;
+    margin-left: 0.8em
+}
+
+.ico,
+input[type=password],
+input[type=text],
+input[type=submit] {
+    font-size: 1.1rem;
+}
+
+.hi-font .ico,
+.hi-font input[type=password],
+.hi-font input[type=text],
+.hi-font input[type=submit] {
+    font-size: 1.4rem;
+}
+
+.bt {
+    opacity: .4
+}
+
+input {
+    outline: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    &:focus {
+        outline: 0;
+    }
+}
+
+input[type=password],
+input[type=text] {
+    line-height: 1;
+    width: calc(100% - 4.4em - 4px);
+    border: 2px solid rgb(var(--text));
+    background-color: rgba(255, 255, 255, .1);
+    height: 3em;
+    padding: 0 0.5em 0 3.9em;
+    margin-bottom: 20px;
+    border-radius: var(--radius);
+    -webkit-transition: -webkit-box-shadow .3s ease-in-out;
+    transition: -webkit-box-shadow .3s ease-in-out;
+    transition: box-shadow .3s ease-in-out;
+    transition: box-shadow .3s ease-in-out, -webkit-box-shadow .3s ease-in-out
+}
+
+input[type=password]:focus,
+input[type=text]:focus {
+    -webkit-box-shadow: 0 0 5px 0 rgba(255, 255, 255, 1);
+    box-shadow: 0 0 5px 0 rgba(255, 255, 255, 1)
+}
+
+input[type=submit] {
+    border-radius: var(--radius);
+    background: black;
+    color: white;
+    border: 0;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    height: calc(3em + 8px);
+    opacity: 0.8
+}
+
+input[type=submit]:focus,
+input[type=submit]:hover {
+    opacity: 1;
+}
+
+.dark input {
+    border-radius: 2px;
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.dark input[type=password],
+.dark input[type=text],
+input[type=password]:focus,
+input[type=text]:focus {
+    background-color: rgba(255, 255, 255, .4)
+}
+
+.dark input[type=password]:focus,
+.dark input[type=text]:focus {
+    background-color: rgba(255, 255, 255, .7)
+}
+
+.dark input[type=submit] {
+    background: #9b1015;
+}
+
+@media (min-width:620px) {
+    .wrap {
+        width: 500px
+    }
+
+    html {
+        font-size: 16px;
+    }
+}
+
+@media (min-width:740px) {
+    html {
+        font-size: 18px;
+    }
+}
