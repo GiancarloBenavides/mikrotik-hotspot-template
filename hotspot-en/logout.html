@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />   
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="expires" content="-1">
-<title>Cerrar sesión</title>
+<title>Internet hotspot - Log out</title>
 <link rel="stylesheet" href="css/style.css">
 <script>
     function openLogin() {
@@ -20,16 +20,16 @@
     <div class="ie-fixMinHeight">
         <div class="main">
             <div class="wrap">
-                <h1>Usted ahora esta conectado!</h1> 
+                <h1>You have just logged out!</h1> 
                 <table>  
-                    <tr><td>Usuario</td><td>$(username)</td></tr>
-                    <tr><td>Dirección IP</td><td>$(ip)</td></tr>
+                    <tr><td>Username</td><td>$(username)</td></tr>
+                    <tr><td>IP address</td><td>$(ip)</td></tr>
                     <tr><td>MAC address</td><td>$(mac)</td></tr>
-                    <tr><td>Tiempo de sesión</td><td>$(uptime)</td></tr>
+                    <tr><td>Session time</td><td>$(uptime)</td></tr>
                     $(if session-time-left)
-                    <tr><td>Tiempo restante</td><td>$(session-time-left)</td></tr>
+                    <tr><td>Time left</td><td>$(session-time-left)</td></tr>
                     $(endif)
-                    <tr><td>Bytes [Cargados/Descargados]:</td><td>$(bytes-in-nice) / $(bytes-out-nice)</td></tr>
+                    <tr><td>Bytes up / down:</td><td>$(bytes-in-nice) / $(bytes-out-nice)</td></tr>
                 </table>
 
 
@@ -45,14 +45,14 @@
                 <style>
                     .str0{clip-rule:evenodd;fill-rule:evenodd}
                 </style>
-                <path class="fil0" d="M15 69.69l0 -39.38c5.66,0 13.65,-0.75 19.1,0.35 9.63,1.93 12.37,13.53 3.24,18.08 10.84,3.16 10.15,19.01 -3.26,20.72 -5.68,0.72 -13.22,0.23 -19.08,0.23zm69.07 -36.34c2.94,2.74 -1.44,7.01 -4.12,4.13l-12.52 -12.53 0 57.13c0,3.84 -5.84,3.84 -5.84,0l0 -57.13 -12.52 12.53c-2.69,2.51 -6.67,-1.39 -4.12,-4.13l17.5 -17.5c1.13,-1.13 2.99,-1.13 4.12,0l17.5 17.5zm-63.85 13.51c3.57,0 10.77,0.56 13.88,-0.58 5.2,-1.91 4.58,-9.35 -0.02,-10.8 -3.01,-0.95 -10.36,-0.55 -13.86,-0.55l0 11.93zm0 18.21c4.05,0 10.1,0.61 13.88,-0.3 7.01,-1.68 7.3,-11.36 0,-12.89 -3.72,-0.77 -10.39,-0.39 -13.88,-0.39l0 13.58z"/>
+                <path class="fil0" d="M15 69.69l0 -39.38 14.78 0c3,0 5.41,0.39 7.24,1.19 1.81,0.8 3.23,2.03 4.26,3.69 1.04,1.65 1.55,3.38 1.55,5.19 0,1.68 -0.46,3.27 -1.37,4.75 -0.9,1.49 -2.28,2.69 -4.12,3.61 2.38,0.69 4.22,1.88 5.49,3.57 1.28,1.68 1.92,3.67 1.92,5.96 0,1.85 -0.39,3.56 -1.17,5.15 -0.78,1.59 -1.74,2.81 -2.89,3.67 -1.14,0.85 -2.58,1.5 -4.3,1.94 -1.74,0.44 -3.85,0.66 -6.37,0.66l-15.02 0zm69.07 -36.34c0.59,0.55 0.93,1.33 0.93,2.14 0,1.61 -1.31,2.91 -2.92,2.91 -0.81,0 -1.58,-0.33 -2.13,-0.92l-12.52 -12.53 0 57.13c0,1.61 -1.31,2.92 -2.92,2.92 -1.61,0 -2.92,-1.31 -2.92,-2.92l0 -57.13 -12.52 12.53c-0.54,0.5 -1.25,0.78 -1.99,0.78 -1.61,0 -2.91,-1.31 -2.91,-2.92 0,-0.74 0.28,-1.45 0.78,-1.99l17.5 -17.5c0.55,-0.54 1.29,-0.85 2.06,-0.85 0.77,0 1.52,0.31 2.06,0.85l17.5 17.5 0 0zm-63.85 13.51l8.52 0c2.31,0 3.97,-0.15 4.97,-0.45 1.33,-0.4 2.33,-1.06 3,-1.97 0.67,-0.92 1,-2.07 1,-3.45 0,-1.31 -0.31,-2.47 -0.94,-3.46 -0.62,-1 -1.52,-1.68 -2.69,-2.05 -1.16,-0.37 -3.16,-0.55 -5.98,-0.55l-7.88 0 0 11.93zm0 18.21l9.81 0c1.69,0 2.87,-0.06 3.56,-0.19 1.19,-0.21 2.2,-0.57 3.01,-1.07 0.8,-0.51 1.46,-1.24 1.99,-2.2 0.52,-0.97 0.77,-2.08 0.77,-3.33 0,-1.48 -0.37,-2.75 -1.13,-3.84 -0.75,-1.09 -1.8,-1.85 -3.14,-2.29 -1.33,-0.44 -3.25,-0.66 -5.75,-0.66l-9.12 0 0 13.58z"/>
             </svg>
         </button>        
         <button class="icon" onclick="body.classList.toggle('hi-contrast'); return false;">
             <svg id="toggle-contrast" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 100 100">
                 <path class="fil0" d="M66.65 54.89c-2.69,2.88 -7.06,-1.39 -4.12,-4.12l12.52 -12.51 -57.14 0c-3.84,0 -3.84,-5.83 0,-5.83l57.14 0c-1.87,-1.87 -12.58,-12.1 -13.11,-13.44 -1.13,-2.86 2.44,-5.3 4.71,-3.2l17.5 17.49c1.13,1.13 1.13,2.99 0,4.12l-17.5 17.49z"/>
                 <path class="fil0" d="M33.35 84.18c2.74,2.55 6.64,-1.42 4.13,-4.12l-12.53 -12.51 57.14 0c3.84,0 3.84,-5.83 0,-5.83l-57.14 0 12.52 -12.51c2.94,-2.73 -1.43,-7 -4.12,-4.12l-17.5 17.48c-1.13,1.14 -1.13,2.99 0,4.12l17.5 17.49z"/>
-                </svg>
+            </svg>
         </button>        
         <button class="icon" onclick="body.classList.toggle('dark'); return false;">
             <svg id="toggle-theme" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 100 100">
