@@ -313,6 +313,12 @@ input[type=text]:focus {
     box-shadow: 0 0 5px 0 rgba(255, 255, 255, 1)
 }
 
+input[type=password]::placeholder,
+input[type=text]::placeholder {
+    color: rgb(20 0 40);
+    opacity: 1;
+}
+
 input[type=submit] {
     border-radius: var(--radius);
     background: black;
